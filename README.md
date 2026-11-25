@@ -77,4 +77,70 @@
 <ul>
   <li><strong>Zero Double-Selling:</strong> Each book connects to a pool of single-use redemption codes stored locally in <code>codes.json</code>. When payment confirms, the server acquires an atomic lock, assigns one unused code, binds it to the Order ID and Litecoin TXID, and delivers it immediately to the buyer.</li>
   <li><strong>Automatic Stock Management:</strong> Titles automatically display as out of stock once all single-use codes are claimed, and restocking takes seconds via bulk paste or JSON export/backup.</li>
-  <li><strong>Privacy-First Buyer Experience:</strong> Readers purchase without creating accounts, sharing personal data, or leaving a trail across third-party processors. Buyers
+  <li><strong>Privacy-First Buyer Experience:</strong> Readers purchase without creating accounts, sharing personal data, or leaving a trail across third-party processors. Buyers can retrieve confirmed orders and receipts anytime through Order Lookup.</li>
+</ul>
+
+<h3>Hardened, Invisible Admin Vault</h3>
+<ul>
+  <li><strong>Hidden From Shoppers:</strong> The public storefront contains no links or references to the admin interface. Admin Vault is reachable only through a customizable Secret Admin URL Path (starting at <code>/admin</code> on fresh install and renameable or randomizable to any private path). Visiting any invalid path silently displays the normal storefront with zero leakage.</li>
+  <li><strong>Strong Local Security:</strong> Credentials are hashed with salted <code>scrypt</code> and stored with restricted permissions (<code>0600</code>), paired with short-lived in-memory Bearer sessions, rate limiting, and optional server environment variable overrides.</li>
+  <li><strong>7-Step First-Time Guided Setup:</strong> A built-in onboarding walkthrough explains every parameter in detail—from account security and wallet setup to notifications and storefront appearance—with one-click skipping on every optional step.</li>
+</ul>
+
+<h3>Sovereign Branding &amp; Store Operations</h3>
+<ul>
+  <li><strong>Bilingual LTR &amp; RTL Storefront:</strong> Native support for English (LTR) and Persian (RTL), with full typography and directional layout adaptation.</li>
+  <li><strong>Customizable Presentation:</strong> Tailor your store name, logo, page title, theme presets, desktop and mobile A4 cover grids, book detail modals, search, subject categories, sorting, support links, and maintenance/pause mode.</li>
+  <li><strong>Promotions, Alerts &amp; Analytics:</strong> Create percentage or fixed-discount promo codes with usage limits and expiry dates, track daily sales charts and order history, and receive instant sale notifications via Telegram, Discord, or signed outbound webhooks.</li>
+</ul>
+
+<h2>Lightweight, Portable &amp; 100% Free</h2>
+
+<p>
+  dipi Storefront requires no external database, cloud lock-in, or paid subscriptions—just Node.js. Every catalog entry, redemption code, order, and setting lives cleanly in local JSON storage under your full control, ready to host on a personal VPS, home server, or federated publishing node.
+</p>
+
+<blockquote>
+  <strong>Important:</strong> dipi is a full-stack Node.js + React application with an Express backend (<code>server.ts</code>) and local JSON storage (<code>data/</code>). Because it runs a backend server and TypeScript/React frontend, <strong>do not open <code>index.html</code> directly by double-clicking it</strong>—start the server using Node.js instead.
+</blockquote>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li><a href="https://nodejs.org/">Node.js</a> <strong>20 or newer</strong> (22+ recommended)</li>
+</ul>
+
+<h2 id="run-locally">Run Locally</h2>
+
+<p>Open a terminal inside the project folder and run:</p>
+
+<pre><code>npm install
+npm run dev</code></pre>
+
+<p>Then open <strong>http://localhost:3000</strong> to view the public storefront.</p>
+
+<p>
+  Admin Vault is hidden from shoppers on the main page. To launch the <strong>First-Time Guided Setup</strong> (create your admin username and password, set an optional custom secret admin URL, add your Litecoin wallet, configure notifications/theme, and add your books &amp; codes), visit:
+</p>
+
+<ul>
+  <li><strong>http://localhost:3000/admin</strong></li>
+</ul>
+
+<p>
+  You can rename <code>/admin</code> to any secret path (for example <code>/vault-a3f89b12</code>) during Step 1 of setup or later under <strong>Settings → Admin Vault Access</strong>. Visiting any wrong path silently shows the normal storefront.
+</p>
+
+<h2 id="run-in-production">Run in Production</h2>
+
+<pre><code>npm install
+npm run build
+NODE_ENV=production npm start</code></pre>
+
+<blockquote>
+  <strong>Note:</strong> On Node.js versions earlier than 22.6, run production with <code>NODE_ENV=production npx tsx server.ts</code>.
+</blockquote>
+
+<p>
+  Set <code>PORT</code> (default <code>3000</code>) if your hosting provider requires a specific port. All store data is saved inside the <code>data/</code> directory (<code>codes.json</code>, <code>orders.json</code>, <code>promos.json</code>, <code>settings.json</code>, <code>admin.json</code>).
+</p>
