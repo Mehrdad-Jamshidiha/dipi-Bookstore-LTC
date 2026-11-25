@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* B Titr font declaration with local system lookup and webfont fallback */
+@font-face {
+  font-family: "B Titr";
+  src:
+    local("B Titr Bold"),
+    local("B Titr"),
+    local("BTitrBold"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Titr/Titr.woff2") format("woff2"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Titr/Titr.woff") format("woff"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Titr/Titr.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-titr: "B Titr", "Lalezar", "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    touch-action: pan-x pan-y;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (max-width: 767px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+.font-titr {
+  font-family: var(--font-titr);
+  font-weight: 700;
+}
+
+.font-fa {
+  font-family: "Vazirmatn", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-aguafina {
+  font-family: "Aguafina Script", cursive;
+}
+
+:root {
+  --store-bg: #FAF9F6;
+  --store-surface: #FFFFFF;
+  --store-text: #181614;
+  --store-muted: color-mix(in srgb, var(--store-text) 62%, transparent);
+  --store-subtle: color-mix(in srgb, var(--store-text) 46%, transparent);
+  --store-border: color-mix(in srgb, var(--store-text) 14%, transparent);
+  --store-accent: #1E40AF;
+  --store-title-font: "B Titr", "Lalezar", "Playfair Display", Georgia, serif;
+  --store-body-font: "DM Sans", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --store-bg-image: none;
+  --store-bg-overlay-alpha: 0.72;
+}
+
+.storefront-themed {
+  background-color: var(--store-bg);
+  color: var(--store-text);
+  font-family: var(--store-body-font);
+  background-image: var(--store-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.storefront-themed-overlay {
+  background-color: color-mix(in srgb, var(--store-bg) var(--store-bg-overlay-pct, 0%), transparent);
+}
+
+.storefront-title {
+  font-family: var(--store-title-font);
+  font-weight: 700;
+}
+
+.storefront-preview {
+  background-color: var(--preview-bg, #FAF9F6);
+  color: var(--preview-text, #181614);
+  font-family: var(--preview-body-font, var(--font-sans));
+  background-image: var(--preview-bg-image, none);
+  background-size: cover;
+  background-position: center;
+}
+
+.storefront-preview-overlay {
+  background-color: color-mix(in srgb, var(--preview-bg, #FAF9F6) var(--preview-overlay-pct, 0%), transparent);
+}
+
+.storefront-preview-title {
+  font-family: var(--preview-title-font, var(--font-titr));
+  font-weight: 700;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>dipi — Digital Bookstore Settled in Litecoin</title>
+    <meta
+      name="description"
+      content="Minimalist digital bookstore accepting Litecoin (LTC). Tap any book to pay with Litecoin and instantly download your verified edition code."
+    />
+    <meta property="og:title" content="dipi — Digital Bookstore Settled in Litecoin" />
+    <meta
+      property="og:description"
+      content="Minimalist digital bookstore accepting Litecoin (LTC). Tap any book to pay with Litecoin and instantly download your verified edition code."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Lalezar&family=Playfair+Display:wght@700;800&family=Vazirmatn:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#FAF9F6] text-[#181614] antialiased selection:bg-[#1E40AF]/15 selection:text-[#1E3A8A]">
+    <div id="root"></div>
+    <noscript>
+      <p>JavaScript is required to run dipi. Start the Node.js server and open http://localhost:3000.</p>
+    </noscript>
+    <div id="file-protocol-notice" hidden>
+      <main style="max-width:540px;margin:64px auto;padding:28px;background:#fff;border:1px solid #E6E2DA;border-radius:12px;font-family:system-ui,-apple-system,sans-serif;color:#181614;line-height:1.6;">
+        <h1 style="margin:0 0 8px;font-size:20px;">dipi requires its Node.js server</h1>
+        <p style="margin:0 0 16px;font-size:14px;color:#6B655E;">
+          Opening <code>index.html</code> directly from your folder cannot load the app or its backend API. Run these commands in this project folder instead:
+        </p>
+        <pre style="margin:0 0 16px;padding:12px 14px;background:#FAF9F6;border:1px solid #E6E2DA;border-radius:8px;font-size:13px;overflow:auto;">npm install
+npm run dev</pre>
+        <p style="margin:0;font-size:14px;color:#6B655E;">
+          Then open <a href="http://localhost:3000" style="color:#1E40AF;font-weight:600;">http://localhost:3000</a> in your browser (Node.js 20+ required). See <code>README.md</code> for production deployment.
+        </p>
+      </main>
+    </div>
+    <script>
+      if (window.location.protocol === 'file:') {
+        var notice = document.getElementById('file-protocol-notice');
+        if (notice) notice.hidden = false;
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

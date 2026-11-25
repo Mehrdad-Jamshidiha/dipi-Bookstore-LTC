@@ -1,0 +1,6 @@
+{
+  "name": "SilverKey",
+  "description": "Instant digital code storefront settled in Litecoin with automated JSON inventory tracking and immediate download upon verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
